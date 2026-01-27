@@ -1,12 +1,11 @@
 import "./style.css";
-import Card from "./card.js";
+import Button from "./button.js"
 
 export default function Home() {
   return (
   <div>
-    <Card name = "Gayathri"/>
-    <Card name = "Daniel"/>
-    <Card name = "012345678912"/>
+    <Button btext = "Add Words" linkto = "/players" color = "lightpink"/>
+    <Button btext = "Set Players" linkto = "/players" color = "lightgreen"/>
   </div>
   );
 }

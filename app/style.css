@@ -1,7 +1,8 @@
 
 .card {
+    background-color: gray;
     border: 3px solid black;
-    border-radius: 5px;
+    border-radius: 15px;
     padding: 50px;
     margin: 20px;
     width: fit-content;
@@ -13,4 +14,25 @@
 .card .player-name {
     font-weight: bold;
     font-size: 40px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', "Geneva", Verdana, sans-serif;
+    color:aqua;
+}
+
+.smallButton {
+    border: 3px solid black;
+    border-radius: 15px;
+    padding: 50px;
+    margin: 20px;
+    width: 250px;
+    display: inline-block;
+    align-items: center;
+}
+
+.smallButton .button-text {
+    font-weight: bold;
+    font-size: 40px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', "Geneva", Verdana, sans-serif;
+    color: black;
+    align-self: center;
+    text-align: center;
 }
