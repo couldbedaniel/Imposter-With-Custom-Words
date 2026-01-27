@@ -23,7 +23,7 @@
     border-radius: 15px;
     padding: 50px;
     margin: 20px;
-    width: 250px;
+    width: 300px;
     display: inline-block;
     align-items: center;
 }
@@ -35,4 +35,22 @@
     color: black;
     align-self: center;
     text-align: center;
+}
+
+.add-button {
+    background-color: green;
+}
+
+.add-button .add-button-text {
+    color: white;
+}
+
+.name-list {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+.name-list-item {
+    
 }
