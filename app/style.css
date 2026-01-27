@@ -1,0 +1,16 @@
+
+.card {
+    border: 3px solid black;
+    border-radius: 5px;
+    padding: 50px;
+    margin: 20px;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.card .player-name {
+    font-weight: bold;
+    font-size: 40px;
+}
