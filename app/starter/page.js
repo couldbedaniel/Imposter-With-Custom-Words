@@ -7,8 +7,18 @@ import {nameList} from "../../data/names.js";
 import PCard from "../game/pcard";
 
 export default function Starter(){
+    const [player, setPlayer] = useState("");
     
+    useEffect(() => {
+        const start = Math.floor(Math.random()*nameList.length);
+        setPlayer(nameList[start]);
+    }, []);
+
+
     return(
-        <h1 style = {{color: "white"}}><span>First to play: </span> Me</h1>
+        <>
+        <h1 style = {{color: "white"}}><span>First to play: </span>{player ? player : "just pick one"}</h1>
+        <Button btext = "Reveal Results" linkto = "./results" color = "indigo"/>
+        </>
     );
 }
