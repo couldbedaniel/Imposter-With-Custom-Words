@@ -30,7 +30,7 @@ export default function Players(){
     return(
         <>
         <div>
-            <h2>Add Players:</h2>
+            <h2 style = {{color: "white"}}>Add Players:</h2>
         <div>
             <input type = "text" placeholder = "Player" value = {playerName} onChange = {handleNameChange}/>
             <button className = "add-button" onClick = {addPlayer}><h3 className = "add-button-text">Add</h3></button>
