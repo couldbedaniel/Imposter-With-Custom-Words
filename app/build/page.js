@@ -9,10 +9,28 @@ import CatBlock from "../categories-page/catblock";
 
 export default function Build(){
     const [category, setCategory] = useState("");
-    const [categories, setCategories] = useState(cats);
+    const [categories, setCategories] = useState([]);
     const [mode, setMode] = useState(-1);
     const [litem, setLitem] = useState("");
     const [itemList, setItemList] = useState([]);
+
+
+    useEffect(() => {
+        const stored = localStorage.getItem("categoryList");
+        if(stored){
+            setCategories(JSON.parse(stored));
+        } else {
+            setCategories(cats);
+        }
+
+    }, []);
+
+    useEffect(() => {
+        if(categories.length === 0) return;
+        
+        localStorage.setItem("categoryList", JSON.stringify(categories));
+    }, [categories]);
+
 
     function handleCatInputChange(event){
         setCategory(event.target.value);
