@@ -10,8 +10,9 @@ export default function Starter(){
     const [player, setPlayer] = useState("");
     
     useEffect(() => {
-        const start = Math.floor(Math.random()*nameList.length);
-        setPlayer(nameList[start]);
+        const players = JSON.parse(localStorage.getItem("players"));
+        const start = Math.floor(Math.random()*players.length);
+        setPlayer(players[start]);
     }, []);
 
 

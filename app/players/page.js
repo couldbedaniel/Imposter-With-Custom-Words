@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, {useState, useEffect} from "react";
 import Card from "./card";
 import "../style.css";
 import Button from "../button.js";
@@ -8,6 +8,20 @@ export default function Players(){
     const [names, setNames] = useState([]);
     const [playerName, setPlayerName] = useState("");
 
+    useEffect(() => {
+        const stored = JSON.parse(localStorage.getItem("players"));
+        if(stored){
+            setNames(stored);
+        }
+    }, [])
+    
+    useEffect(() => {
+        if(names.length !== 0) {
+            localStorage.setItem("players", JSON.stringify(names));
+        }
+    }, [names])
+    
+    
     function handleNameChange(event){
         setPlayerName(event.target.value);
     }

@@ -60,12 +60,31 @@ export default function Build(){
     function addLitem(){
         if(litem.trim() !== ""){
             setItemList(e => [...e, {item: litem, hint: ""}]);
+            setCategories(prev => prev.map((cat, index) => 
+            index === mode
+            ? {
+            ...cat,
+            list: [...cat.list, {item: litem, hint: ""}]
+            }
+            : cat
+            ));
             setLitem("");
         }
     }
 
     function deleteLitem(index){
         setItemList(e => e.filter((_, i) => i !== index));
+        setCategories(prev => prev.map((cat, i) => 
+            i === mode ? {
+                ...cat, list: [...cat.list.filter((thing, j) => j !== index)]
+            } : cat
+        ));
+    }
+
+    function deleteCategory(index){
+        setCategories(prev => prev.filter((_, i) => i !== index));
+        setItemList([]);
+        setMode(-1);
     }
 
     if(mode === -1){
@@ -101,6 +120,7 @@ export default function Build(){
             )}
             </ul>
             <button className = "smallButton" style = {{backgroundColor: "brown"}} onClick = {returnHome}><h1 className = "button-text">Save and Return</h1></button>
+            <button className = "smallButton" style = {{backgroundColor: "lightpink"}} onClick = {() => deleteCategory(mode)}><h1 className = "button-text">Delete Category</h1></button>
             </>
         );
     }

@@ -8,20 +8,32 @@ import PCard from "./pcard.js";
 
 
 export default function Game(){
-    const [chosen, setChosen] = useState(Array(nameList.length).fill(false));
+    const [chosen, setChosen] = useState([]);
     const [imposter, setImposter] = useState(null);
     const [category, setCategory] = useState(null);
     const [word, setWord] = useState(null);
     const [on, setOn] = useState(-1);
+    const [players, setPlayers] = useState([]);
+
 
     useEffect(() => {
-        setImposter(Math.floor(Math.random()*nameList.length));
+        const stored = JSON.parse(localStorage.getItem("players"));
+        setPlayers(stored);
         
-        const number1 = Math.floor(Math.random()*cats.length);
-        setCategory(cats[number1]);
+        if(stored) setChosen(Array(stored.length).fill(false));
+        const impNum = Math.floor(Math.random()*stored.length);
+        setImposter(impNum);
+        
+        const parsed = JSON.parse(localStorage.getItem("selected"));
 
-        const number2 = Math.floor(Math.random()*cats[number1].list.length);
-        setWord(cats[number1].list[number2]);
+        const number1 = Math.floor(Math.random()*parsed.length);
+        setCategory(parsed[number1]);
+
+        const number2 = Math.floor(Math.random()*parsed[number1].list.length);
+        setWord(parsed[number1].list[number2]);
+        
+        localStorage.setItem("imposter", stored[impNum]);
+        localStorage.setItem("word", JSON.stringify(parsed[number1].list[number2]));
     }, []);
 
 
@@ -47,7 +59,7 @@ export default function Game(){
         <>
         <h1 style = {{color: "white"}}>Select name to reveal role/word</h1>
         <ul className = "name-list">
-            {nameList.map((named, index) => <li key = {index}>
+            {players.map((named, index) => <li key = {index}>
                 <PCard name = {named} chosen = {chosen[index]} onClick = {() => handleChoose(index)}/>
             </li>
             )}
